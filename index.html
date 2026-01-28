@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>凱擘寬頻｜台北市限定優惠方案</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="凱擘寬頻｜台北市限定優惠：1000M/50M、500M/50M、300M/50M，附安卓聯網機上盒與無線電視台 22 台。" />
+  <meta name="description" content="凱擘寬頻 台北市限定優惠：一般方案/高速對稱上傳/企業固定IP專案，一鍵電話與LINE洽詢。" />
 
   <style>
     :root{
@@ -24,6 +24,7 @@
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
@@ -33,23 +34,21 @@
         radial-gradient(900px 500px at 90% 20%, rgba(74,163,255,.22), transparent 60%),
         radial-gradient(900px 500px at 40% 90%, rgba(57,217,138,.12), transparent 60%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
-      min-height:100vh;
-      padding: 26px 16px 40px;
+      padding: 26px 16px 90px;
     }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-    }
+    a{color:inherit}
+    .wrap{max-width: 1080px; margin:0 auto;}
 
+    /* Top badge bar */
     .topbar{
       display:flex;
       gap:12px;
       align-items:center;
       justify-content:space-between;
       margin-bottom: 14px;
+      flex-wrap:wrap;
     }
-
     .badge{
       display:inline-flex;
       gap:10px;
@@ -68,10 +67,11 @@
       box-shadow: 0 0 18px rgba(74,163,255,.55);
     }
 
+    /* Hero */
     .hero{
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: calc(var(--radius) + 4px);
       box-shadow: var(--shadow);
       padding: 22px 20px;
       position:relative;
@@ -85,14 +85,20 @@
       animation: scan 5.5s linear infinite;
       pointer-events:none;
     }
-    @keyframes scan{
-      0%{transform:translateX(-60%)}
-      100%{transform:translateX(60%)}
+    @keyframes scan{0%{transform:translateX(-60%)} 100%{transform:translateX(60%)}}
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 14px;
+      align-items:stretch;
+      margin-top: 6px;
     }
+    @media (max-width: 900px){ .hero-grid{grid-template-columns:1fr} }
 
     h1{
-      margin: 6px 0 10px;
-      font-size: 28px;
+      margin: 6px 0 8px;
+      font-size: 30px;
       letter-spacing:.3px;
     }
     .sub{
@@ -101,16 +107,8 @@
       line-height:1.8;
       margin:0;
     }
-
-    .grid{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 14px;
-    }
-    @media (max-width: 860px){
-      .grid{grid-template-columns: 1fr}
-    }
+    .accent{color: rgba(74,163,255,.95); font-weight:800}
+    .ok{color: rgba(57,217,138,.95); font-weight:700}
 
     .card{
       border: 1px solid var(--line);
@@ -120,71 +118,20 @@
       backdrop-filter: blur(12px);
     }
 
-    .section-title{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-    .chip{
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      margin-left:auto;
-    }
-
-    table{
-      width:100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      overflow:hidden;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.18);
-    }
-    th,td{
-      padding: 14px 12px;
-      text-align:center;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      font-size: 15px;
-    }
-    th{
-      font-size: 13px;
-      color: rgba(255,255,255,.75);
-      background: rgba(255,255,255,.06);
-      letter-spacing: .6px;
-      text-transform: uppercase;
-    }
-    tr:last-child td{border-bottom:0}
-    .speed{font-weight:700}
-    .price{
-      font-weight:800;
-      font-size: 16px;
-      background: linear-gradient(90deg, rgba(74,163,255,.18), rgba(124,92,255,.18));
-    }
-
-    .list{
-      margin:0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.9;
-    }
-    .ok{color: rgba(57,217,138,.95); font-weight:700}
-    .accent{color: rgba(74,163,255,.95); font-weight:800}
-
-    .cta{
+    /* Contact panel */
+    .kv{
       display:grid;
-      grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 12px;
     }
-    @media (max-width: 520px){
-      .cta{grid-template-columns: 1fr}
+    .kv .item{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 12px 12px;
     }
+    .kv .k{color: var(--muted); font-size: 13px}
+    .kv .v{font-size: 16px; font-weight: 800; margin-top: 2px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
 
     .btn{
       display:flex;
@@ -213,43 +160,173 @@
       color: var(--muted);
       letter-spacing: 0;
     }
-    .btn-line{
-      border-color: rgba(57,217,138,.35);
-    }
+    .btn-line{border-color: rgba(57,217,138,.35);}
     .btn-line:hover{
       border-color: rgba(57,217,138,.7);
       background: linear-gradient(180deg, rgba(57,217,138,.16), rgba(255,255,255,.05));
     }
 
-    .kv{
-      display:grid;
-      gap: 10px;
+    .section-title{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin: 0 0 12px;
+      font-size: 18px;
     }
-    .kv .item{
-      border: 1px solid rgba(255,255,255,.10);
+    .chip{
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
       background: rgba(255,255,255,.05);
-      border-radius: 14px;
-      padding: 12px 12px;
+      color: var(--muted);
+      margin-left:auto;
     }
-    .kv .k{color: var(--muted); font-size: 13px}
-    .kv .v{font-size: 16px; font-weight: 800; margin-top: 2px}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+
+    /* Tabs */
+    .tabs{
+      margin-top: 16px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius: calc(var(--radius) + 2px);
+      overflow:hidden;
+    }
+    .tabbar{
+      display:flex;
+      gap:0;
+      flex-wrap:wrap;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .tabbtn{
+      appearance:none;
+      border:0;
+      background:transparent;
+      color: rgba(255,255,255,.75);
+      padding: 12px 14px;
+      cursor:pointer;
+      font-weight: 800;
+      letter-spacing:.2px;
+      transition: background .12s ease, color .12s ease;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .tabbtn:hover{background: rgba(255,255,255,.05); color: var(--text);}
+    .tabbtn[aria-selected="true"]{
+      color: var(--text);
+      background: linear-gradient(90deg, rgba(74,163,255,.14), rgba(124,92,255,.14));
+      border-bottom: 2px solid rgba(74,163,255,.75);
+    }
+    .tabpanel{
+      padding: 16px;
+      display:none;
+    }
+    .tabpanel.active{display:block;}
+
+    /* Tables */
+    table{
+      width:100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow:hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+    }
+    th,td{
+      padding: 14px 12px;
+      text-align:center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 15px;
+    }
+    th{
+      font-size: 13px;
+      color: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.06);
+      letter-spacing: .6px;
+      text-transform: uppercase;
+    }
+    tr:last-child td{border-bottom:0}
+    .speed{font-weight:800}
+    .price{
+      font-weight:900;
+      font-size: 16px;
+      background: linear-gradient(90deg, rgba(74,163,255,.18), rgba(124,92,255,.18));
+    }
+    .hint{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.18);
+      color: rgba(255,255,255,.70);
+      background: rgba(0,0,0,.14);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .hint b{color: rgba(255,255,255,.9)}
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 900px){ .split{grid-template-columns:1fr} }
+
+    .mini-card{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .mini-card h3{
+      margin: 0 0 8px;
+      font-size: 15px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .mini-card p{
+      margin:0;
+      color: rgba(255,255,255,.70);
+      line-height: 1.75;
+      font-size: 13px;
+    }
+
+    /* Floating actions */
+    .float-actions{
+      position:fixed;
+      right: 14px;
+      bottom: 14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      z-index:999;
+    }
+    .fab{
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(10, 14, 30, .75);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+      transition: transform .12s ease, border-color .12s ease;
+      font-size: 22px;
+    }
+    .fab:hover{transform: translateY(-1px); border-color: rgba(74,163,255,.55);}
+    .fab.line:hover{border-color: rgba(57,217,138,.75);}
+    .fab span{filter: drop-shadow(0 10px 12px rgba(0,0,0,.35));}
 
     .footer{
       margin-top: 18px;
       color: rgba(255,255,255,.55);
       text-align:center;
       font-size: 13px;
-    }
-    .hint{
-      margin-top: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px dashed rgba(255,255,255,.18);
-      color: rgba(255,255,255,.65);
-      background: rgba(0,0,0,.16);
-      font-size: 13px;
-      line-height: 1.7;
     }
   </style>
 </head>
@@ -259,30 +336,97 @@
 
     <div class="topbar">
       <div class="badge"><span class="dot"></span> 台北市限定優惠｜凱擘寬頻</div>
-      <div class="badge">HTTPS 安全連線</div>
+      <div class="badge">HTTPS 安全連線｜價格透明｜一鍵洽詢</div>
     </div>
 
+    <!-- HERO -->
     <section class="hero">
-      <h1>光纖上網方案｜穩定高速 + Wi-Fi 環境</h1>
-      <p class="sub">
-        申裝 <span class="accent">光纖雙向對稱頻寬網路</span>，追劇、會議、遊戲更順。
-        <br>下方提供熱門方案與價格，亦可加選 <span class="accent">高速雙向對稱</span> 與 <span class="accent">有線電視套餐</span>。
-      </p>
-    </section>
+      <div class="hero-grid">
+        <div class="card" style="background:transparent;border-color:rgba(255,255,255,.10);">
+          <h1>高速上網方案整合：一般 / 高上傳 / 企業固定 IP</h1>
+          <p class="sub">
+            想要 <span class="accent">追劇穩</span>、<span class="accent">上傳快</span>、或是 <span class="accent">企業級固定 IP</span>？
+            <br>在同一頁面幫你一次選到最適合的方案。
+          </p>
 
-    <div class="grid">
-      <section class="card">
-        <div class="section-title">
-          📶 網速方案與優惠價格
-          <span class="chip">每月費用</span>
+          <div class="split">
+            <div class="mini-card">
+              <h3>📺 一般家庭/租屋首選</h3>
+              <p>下載為主的追劇、上網、多人裝置使用。<br><span class="ok">✔</span> 附安卓聯網機上盒＋無線電視台 22 台（依方案說明）</p>
+            </div>
+            <div class="mini-card">
+              <h3>☁️ 高上傳 / 對稱頻寬</h3>
+              <p>直播、監控回傳、雲端同步、多人視訊會議。<br><span class="ok">✔</span> 上傳更順、延遲體感更穩</p>
+            </div>
+          </div>
         </div>
 
-        <table aria-label="網速方案與價格">
+        <!-- Contact -->
+        <aside class="card">
+          <div class="section-title">
+            📞 一鍵聯絡
+            <span class="chip">立即洽詢</span>
+          </div>
+
+          <div class="kv">
+            <div class="item">
+              <div class="k">業務專員</div>
+              <div class="v">方先生</div>
+            </div>
+
+            <div class="item">
+              <div class="k">電話（點擊直接撥號）</div>
+              <div class="v mono">
+                <a class="btn" href="tel:+886922147485" aria-label="撥打電話 0922-147-485">
+                  📱 0922-147-485
+                  <small>點一下就撥打</small>
+                </a>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="k">LINE（點擊直接開啟）</div>
+              <div class="v mono">
+                <a class="btn btn-line" href="https://line.me/ti/p/~0922147485" target="_blank" rel="noopener"
+                   aria-label="用 LINE 加好友 0922147485">
+                  💬 LINE：0922147485
+                  <small>點一下就開啟 LINE</small>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hint">
+            <div><span class="ok">✔</span> 歡迎直接傳：地址 / 想要的方案 / 使用情境（追劇、上傳、固定 IP）</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TABS: 整合三大方案 -->
+    <section class="tabs" aria-label="方案切換">
+      <div class="tabbar" role="tablist" aria-label="方案類型">
+        <button class="tabbtn" role="tab" id="tab-normal" aria-controls="panel-normal" aria-selected="true">
+          📶 一般方案（下載為主）
+        </button>
+        <button class="tabbtn" role="tab" id="tab-symmetric" aria-controls="panel-symmetric" aria-selected="false">
+          ⚡ 高上傳/對稱頻寬
+        </button>
+        <button class="tabbtn" role="tab" id="tab-biz" aria-controls="panel-biz" aria-selected="false">
+          🏢 企業方案（固定 IP）
+        </button>
+      </div>
+
+      <!-- 一般方案 -->
+      <div class="tabpanel active" role="tabpanel" id="panel-normal" aria-labelledby="tab-normal">
+        <div class="section-title">📶 一般上網方案與價格 <span class="chip">每月費用</span></div>
+
+        <table aria-label="一般方案">
           <thead>
             <tr>
               <th>網速</th>
               <th>特色</th>
-              <th>優惠價</th>
+              <th>月租</th>
             </tr>
           </thead>
           <tbody>
@@ -306,58 +450,165 @@
 
         <div class="hint">
           <div><span class="ok">✔</span> 方案附帶 <b>安卓聯網機上盒</b>，並提供 <b>無線電視台 22 台</b></div>
-          <div><span class="ok">✔</span> 另有高速雙向對稱：<b>1G/1G、500M/500M、300M/300M</b></div>
-          <div><span class="ok">✔</span> 可搭配 <b>有線電視套餐</b>（多元組合，服務市場領先）</div>
-        </div>
-      </section>
-
-      <aside class="card">
-        <div class="section-title">
-          📞 一鍵聯絡
-          <span class="chip">立即洽詢</span>
+          <div><span class="ok">✔</span> 若你「上傳」也很在意（監控回傳/直播/雲端），請切到 <b>高上傳/對稱頻寬</b></div>
         </div>
 
-        <div class="kv">
-          <div class="item">
-            <div class="k">業務專員</div>
-            <div class="v">方先生</div>
+        <div class="split">
+          <div class="mini-card">
+            <h3>🙋‍♂️ 適合誰？</h3>
+            <p>追劇、一般上網、遊戲下載、多人裝置同時使用（以下載為主）。</p>
           </div>
-
-          <div class="item">
-            <div class="k">電話（點擊直接撥號）</div>
-            <div class="v mono">
-              <a class="btn" href="tel:+886922147485" aria-label="撥打電話 0922-147-485">
-                📱 0922-147-485
-                <small>點一下就撥打</small>
-              </a>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="k">LINE（點擊直接開啟）</div>
-            <div class="v mono">
-              <!-- 優先用 line.me 加好友（手機會跳 LINE），電腦會開網頁 -->
-              <a class="btn btn-line" href="https://line.me/ti/p/~0922147485" target="_blank" rel="noopener"
-                 aria-label="用 LINE 加好友 0922147485">
-                💬 LINE：0922147485
-                <small>點一下就開啟 LINE</small>
-              </a>
-            </div>
+          <div class="mini-card">
+            <h3>✅ 選擇建議</h3>
+            <p><b>300M</b>：一般家庭<br><b>500M</b>：多裝置/常追劇<br><b>1000M</b>：重度使用/更流暢</p>
           </div>
         </div>
+      </div>
 
-        <div class="cta" aria-label="快速聯絡按鈕">
-          <a class="btn" href="tel:+886922147485">立即致電<small>快速詢價/安裝</small></a>
-          <a class="btn btn-line" href="https://line.me/ti/p/~0922147485" target="_blank" rel="noopener">LINE 洽詢<small>傳地址/需求更方便</small></a>
+      <!-- 高上傳 / 對稱 -->
+      <div class="tabpanel" role="tabpanel" id="panel-symmetric" aria-labelledby="tab-symmetric">
+        <div class="section-title">⚡ 高速雙向對稱頻寬方案 <span class="chip">上傳更快</span></div>
+
+        <table aria-label="對稱頻寬方案">
+          <thead>
+            <tr>
+              <th>對稱網速</th>
+              <th>適用情境</th>
+              <th>月租</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="speed">1G / 600M</td>
+              <td>直播、上傳、大量雲端同步</td>
+              <td class="price">1099 元 / 月</td>
+            </tr>
+            <tr>
+              <td class="speed">500M / 500M</td>
+              <td>多裝置同時使用、遠端會議</td>
+              <td class="price">999 元 / 月</td>
+            </tr>
+            <tr>
+              <td class="speed">300M / 300M</td>
+              <td>一般商用/家庭對稱需求</td>
+              <td class="price">899 元 / 月</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="hint">
+          <div><span class="ok">✔</span> 特別適合：監控影像回傳、直播上傳、雲端備份同步、多人視訊</div>
+          <div><span class="ok">✔</span> 若你需要 <b>固定 IP</b> / 對外服務 / VPN，多半會建議看 <b>企業方案</b></div>
         </div>
 
-        <p class="footer">歡迎來電或 LINE 洽詢</p>
-      </aside>
-    </div>
+        <div class="split">
+          <div class="mini-card">
+            <h3>📌 什麼情況要選對稱？</h3>
+            <p>你覺得「上傳卡卡」或「視訊不穩」，通常就是上傳不足或線路品質差。對稱方案會更有感。</p>
+          </div>
+          <div class="mini-card">
+            <h3>🚀 建議</h3>
+            <p><b>300/300</b>：基本對稱需求<br><b>500/500</b>：多人會議/雲端同步常態<br><b>1G/600</b>：重度上傳/直播/影像回傳</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 企業方案 -->
+      <div class="tabpanel" role="tabpanel" id="panel-biz" aria-labelledby="tab-biz">
+        <div class="section-title">🏢 企業專線方案（含固定 IP） <span class="chip">企業級穩定</span></div>
+
+        <table aria-label="企業專線固定IP方案">
+          <thead>
+            <tr>
+              <th>可用固定 IP</th>
+              <th>1G / 600M</th>
+              <th>500M / 500M</th>
+              <th>300M / 300M</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="speed">1 個固定 IP</td>
+              <td class="price">1,999 元 / 月</td>
+              <td class="price">1,499 元 / 月</td>
+              <td class="price">1,299 元 / 月</td>
+            </tr>
+            <tr>
+              <td class="speed">5 個固定 IP</td>
+              <td class="price">2,299 元 / 月</td>
+              <td class="price">1,699 元 / 月</td>
+              <td class="price">1,499 元 / 月</td>
+            </tr>
+            <tr>
+              <td class="speed">13 個固定 IP</td>
+              <td class="price">2,699 元 / 月</td>
+              <td class="price">1,899 元 / 月</td>
+              <td class="price">1,699 元 / 月</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="hint">
+          <div><span class="ok">✔</span> 適用：公司行號、門店、多點 VPN、伺服器/門禁/監控對外服務、需固定 IP 管理</div>
+          <div><span class="ok">✔</span> 你只要跟我說「需要幾個固定 IP、要做什麼用途」，我可以直接幫你選最省的組合</div>
+        </div>
+
+        <div class="split">
+          <div class="mini-card">
+            <h3>🔐 固定 IP 可以做什麼？</h3>
+            <p>對外連線白名單、遠端 VPN、固定位置監控/門禁管理、內部系統對外服務等。</p>
+          </div>
+          <div class="mini-card">
+            <h3>🧩 選擇建議</h3>
+            <p><b>1 IP</b>：基本企業需求<br><b>5 IP</b>：多服務/多設備<br><b>13 IP</b>：更多分流/管理需求</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="footer">
-      © 凱擘寬頻｜台北市限定優惠方案
+      © 凱擘寬頻｜台北市限定優惠方案（一般 / 高上傳 / 企業固定 IP）
     </div>
+
   </div>
+
+  <!-- 右下角浮動一鍵聯絡 -->
+  <div class="float-actions" aria-label="浮動快捷聯絡">
+    <a class="fab line" href="https://line.me/ti/p/~0922147485" target="_blank" rel="noopener" aria-label="LINE 一鍵開啟">
+      <span>💬</span>
+    </a>
+    <a class="fab" href="tel:+886922147485" aria-label="電話一鍵撥號">
+      <span>📱</span>
+    </a>
+  </div>
+
+  <script>
+    // Tabs
+    const tabs = [
+      {btn: 'tab-normal', panel: 'panel-normal'},
+      {btn: 'tab-symmetric', panel: 'panel-symmetric'},
+      {btn: 'tab-biz', panel: 'panel-biz'}
+    ];
+
+    function activate(tabId){
+      tabs.forEach(t=>{
+        const b = document.getElementById(t.btn);
+        const p = document.getElementById(t.panel);
+        const on = (t.btn === tabId);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        p.classList.toggle('active', on);
+      });
+    }
+
+    tabs.forEach(t=>{
+      document.getElementById(t.btn).addEventListener('click', ()=>activate(t.btn));
+    });
+
+    // Optional: 支援網址 hash 直接定位（#normal/#symmetric/#biz）
+    const hash = (location.hash || '').replace('#','');
+    if(hash === 'normal') activate('tab-normal');
+    if(hash === 'symmetric') activate('tab-symmetric');
+    if(hash === 'biz') activate('tab-biz');
+  </script>
 </body>
 </html>
